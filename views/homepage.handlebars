@@ -1,6 +1,4 @@
-const router = require("express").Router();
-
-// <!-- Loop over each object in the projects array -->
+<!-- Loop over each object in the projects array -->
 {{#each projects as |project| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
@@ -24,6 +22,3 @@ const router = require("express").Router();
   </div>
 </div>
 {{/each}}
-
-
-module.exports = router;

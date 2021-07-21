@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
   
       include: [
         {
-          // be sure to include its associated Products
+      
           model: User,
           attributes: ["user_name"],
         },
@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
   });
 
   router.post("/", (req, res) => {
-    // create a new category
+    // create a new Post
     Post.create({
       post_name: req.body.post_name,
       post_body: req.body.post_body,

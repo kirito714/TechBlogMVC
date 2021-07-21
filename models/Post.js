@@ -32,7 +32,7 @@ Post.init(
       //   * Doesn't allow null values.
       allowNull: false,
     },
-    // * `category_id`
+    // * `user_id`
     user_id: {
       type: DataTypes.INTEGER,
       //   * References the `User` model's `id`.
