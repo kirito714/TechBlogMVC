@@ -32,22 +32,29 @@ Post.init(
       //   * Doesn't allow null values.
       allowNull: false,
     },
+    date: {
+      //   * String.
+      type: DataTypes.DATE,
+      
+      defaultValue: DataTypes.NOW,
+    },
     // * `user_id`
     user_id: {
       type: DataTypes.INTEGER,
       //   * References the `User` model's `id`.
       references: {
-        model: "User",
-        key: "id",
+        model: 'user',
+        key: 'id',
       },
     },
+    
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "post",
+    modelName: 'post',
   }
 );
 

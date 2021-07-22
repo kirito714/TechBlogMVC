@@ -1,41 +1,39 @@
 const router = require("express").Router();
 // requiring my models routes
 const { Post, User } = require("../../models");
+const withAuth = require("../../utils/auth");
+// api/post
+router.post("/", withAuth, async (req, res) => {
+  try {
+    const newPost = await Post.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
 
-router.get("/", (req, res) => {
-    // find all Posts
-    Post.findAll({
-      attributes: ["id", "post_name","post_body",],
+    res.status(200).json(newPost);
+  } catch (err) {
+    res.status(400).json(err);
+  }
   
-      include: [
-        {
-      
-          model: User,
-          attributes: ["user_name"],
-        },
-      ],
-    })
-      .then((data) => res.json(data))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+});
+router.delete("/:id", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
 
-  router.post("/", (req, res) => {
-    // create a new Post
-    Post.create({
-      post_name: req.body.post_name,
-      post_body: req.body.post_body,
-    })
-      .then((data) => res.json(data))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+    if (!postData) {
+      res.status(404).json({ message: "No post found with this id!" });
+      return;
+    }
 
-
-
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
