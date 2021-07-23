@@ -33,9 +33,9 @@ Comments.init(
       //   * Doesn't allow null values.
       defaultValue: DataTypes.NOW,
     },
-    // * `user_id`
     post_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       //   * References the `User` model's `id`.
       references: {
         model: 'post',
@@ -48,7 +48,7 @@ Comments.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comments',
+    modelName: "comment",
   }
 );
 

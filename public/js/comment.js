@@ -1,7 +1,7 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const comment_body = document.querySelector("#commentField").value.trim();
+  const comment_body = document.querySelector("#commentData").value.trim();
 
   if (comment_body) {
      
@@ -14,7 +14,7 @@ const newFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/");
     } else {
       alert("Failed to create comment");
     }

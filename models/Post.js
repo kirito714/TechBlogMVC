@@ -32,7 +32,7 @@ Post.init(
       //   * Doesn't allow null values.
       allowNull: false,
     },
-    date: {
+    date_created: {
       //   * String.
       type: DataTypes.DATE,
       

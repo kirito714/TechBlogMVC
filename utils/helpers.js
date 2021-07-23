@@ -11,8 +11,8 @@ module.exports = {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
   },
-  // format_date: (date) => {
-  //   // Format date as MM/DD/YYYY
-  //   return date.toLocaleDateString();
-  // },
+  format_date: (date) => {
+    // Format date as MM/DD/YYYY
+    return date.toLocaleDateString();
+  },
 };
