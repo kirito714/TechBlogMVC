@@ -3,8 +3,6 @@ const router = require("express").Router();
 const { Post, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-
-
 // api/post
 router.post("/", withAuth, async (req, res) => {
   try {
@@ -17,7 +15,6 @@ router.post("/", withAuth, async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-  
 });
 router.delete("/:id", withAuth, async (req, res) => {
   try {
